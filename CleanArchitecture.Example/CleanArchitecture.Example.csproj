@@ -96,8 +96,16 @@
     </Compile>
     <Compile Include="Services\DialogService.cs" />
     <Compile Include="ViewModels\AppViewModelBase.cs" />
+    <Compile Include="ViewModels\DetailDataListViewModel.cs" />
+    <Compile Include="ViewModels\GetCurrentDateTimeViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\DetailDataListView.xaml.cs">
+      <DependentUpon>DetailDataListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GetCurrentDateTimeView.xaml.cs">
+      <DependentUpon>GetCurrentDateTimeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
@@ -112,6 +120,12 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\QuestionDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DetailDataListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GetCurrentDateTimeView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Shell.xaml">
