@@ -94,6 +94,7 @@
     <Compile Include="Components\QuestionDialog.xaml.cs">
       <DependentUpon>QuestionDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Interactions\MenuItem.cs" />
     <Compile Include="Services\DialogService.cs" />
     <Compile Include="ViewModels\AppViewModelBase.cs" />
     <Compile Include="ViewModels\DetailDataListViewModel.cs" />
