@@ -83,8 +83,12 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Compile Include="ComponentModels\InformationViewModel.cs" />
+    <Compile Include="ComponentModels\QuestionViewModel.cs" />
     <Compile Include="Components\InformationDialog.xaml.cs">
       <DependentUpon>InformationDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\QuestionDialog.xaml.cs">
+      <DependentUpon>QuestionDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\DialogService.cs" />
     <Compile Include="ViewModels\AppViewModelBase.cs" />
@@ -98,6 +102,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Components\InformationDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\QuestionDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Shell.xaml">

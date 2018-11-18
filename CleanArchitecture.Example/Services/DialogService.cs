@@ -21,9 +21,10 @@ namespace CleanArchitecture.Example.Services
             return DialogHost.Show(dialog);
         }
 
-        public Task<bool> Question(IDialogData dialogData)
+        public async Task<bool> Question(IDialogData dialogData)
         {
-            throw new System.NotImplementedException();
+            var dialog = new QuestionDialog { DataContext = new QuestionViewModel(dialogData) };
+            return (bool) await DialogHost.Show(dialog);
         }
 
         public Task Error(IDialogData dialogData)

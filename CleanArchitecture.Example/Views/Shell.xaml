@@ -14,7 +14,10 @@
         mvvm:ViewModelLocator.AutoWireViewModel="True"
         mc:Ignorable="d">
     <Grid>
-        <Button Command="{Binding InformationDialogCommand, Mode=OneTime}" Content="info" />
+        <StackPanel Orientation="Vertical">
+            <Button Command="{Binding InformationDialogCommand, Mode=OneTime}" Content="info" />
+            <Button Command="{Binding QuestionDialogCommand, Mode=OneTime}" Content="question" />
+        </StackPanel>
         <materialDesign:DialogHost Identifier="{x:Static viewModels:ShellViewModel.DialogIdentifier}" />
     </Grid>
 </Window>
