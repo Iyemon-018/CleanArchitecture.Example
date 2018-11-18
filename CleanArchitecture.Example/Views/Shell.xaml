@@ -17,6 +17,7 @@
         <StackPanel Orientation="Vertical">
             <Button Command="{Binding InformationDialogCommand, Mode=OneTime}" Content="info" />
             <Button Command="{Binding QuestionDialogCommand, Mode=OneTime}" Content="question" />
+            <Button Command="{Binding ErrorDialogCommand, Mode=OneTime}" Content="error" />
         </StackPanel>
         <materialDesign:DialogHost Identifier="{x:Static viewModels:ShellViewModel.DialogIdentifier}" />
     </Grid>

@@ -18,20 +18,19 @@ namespace CleanArchitecture.Example.Services
         public Task Information(IDialogData dialogData)
         {
             var dialog = new InformationDialog {DataContext = new InformationViewModel(dialogData)};
-            return DialogHost.Show(dialog);
+            return DialogHost.Show(dialog, _identifier);
         }
 
         public async Task<bool> Question(IDialogData dialogData)
         {
-            var dialog = new QuestionDialog { DataContext = new QuestionViewModel(dialogData) };
-            return (bool) await DialogHost.Show(dialog);
+            var dialog = new QuestionDialog {DataContext = new QuestionViewModel(dialogData)};
+            return (bool) await DialogHost.Show(dialog, _identifier);
         }
 
         public Task Error(IDialogData dialogData)
         {
-            throw new System.NotImplementedException();
+            var dialog = new ErrorDialog {DataContext = new ErrorViewModel(dialogData)};
+            return DialogHost.Show(dialog, _identifier);
         }
-
-
     }
 }

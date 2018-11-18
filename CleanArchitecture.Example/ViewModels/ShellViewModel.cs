@@ -22,6 +22,11 @@ namespace CleanArchitecture.Example.ViewModels
                                                                 App.Current.Shutdown();
                                                             }
                                                         });
+            ErrorDialogCommand = new DelegateCommand(async () =>
+                                                     {
+                                                         await dialogService.Error(DialogData.Build("Test"
+                                                                                                  , "エラーです。これはエラーであることを示しています。"));
+                                                     });
         }
 
         public ICommand InformationDialogCommand { get; private set; }
