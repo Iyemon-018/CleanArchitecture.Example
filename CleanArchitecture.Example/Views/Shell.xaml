@@ -59,7 +59,7 @@
                     </Grid>
                 </materialDesign:ColorZone>
                 <Border Grid.Row="1">
-                    <Frame />
+                    <Frame x:Name="ContentFrame" />
                 </Border>
             </Grid>
         </materialDesign:DrawerHost>

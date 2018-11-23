@@ -95,6 +95,7 @@
       <DependentUpon>QuestionDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Interactions\MenuItem.cs" />
+    <Compile Include="Services\ContentNavigator.cs" />
     <Compile Include="Services\DialogService.cs" />
     <Compile Include="ViewModels\AppViewModelBase.cs" />
     <Compile Include="ViewModels\DetailDataListViewModel.cs" />
@@ -114,6 +115,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewType.cs" />
     <Page Include="Components\ErrorDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

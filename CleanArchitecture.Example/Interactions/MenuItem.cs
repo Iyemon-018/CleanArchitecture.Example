@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿using System.Windows.Input;
+using Prism.Mvvm;
 
 namespace CleanArchitecture.Example.Interactions
 {
@@ -11,5 +12,15 @@ namespace CleanArchitecture.Example.Interactions
             get => _name;
             set => SetProperty(ref _name, value);
         }
+
+        private readonly ViewType _viewType;
+
+        public MenuItem(ViewType viewType)
+        {
+            _viewType = viewType;
+        }
+
+
+        public ICommand SelectionCommand { get; set; }
     }
 }
