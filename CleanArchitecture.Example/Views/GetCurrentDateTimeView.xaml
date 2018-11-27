@@ -11,5 +11,6 @@
 
     <Grid>
         <TextBlock Text="GetCurrentDateTimeView" />
+        <Button Command="{Binding GetCurrentDateTimeCommand, Mode=OneWay}" Content="Execute" />
     </Grid>
 </Page>
