@@ -74,5 +74,6 @@
             </Grid>
         </materialDesign:DrawerHost>
         <materialDesign:DialogHost Identifier="{x:Static viewModels:ShellViewModel.DialogIdentifier}" />
+        <materialDesign:DialogHost Identifier="{x:Static viewModels:ShellViewModel.ProgressDialogIdentifier}" />
     </Grid>
 </Window>

@@ -7,6 +7,7 @@
   <ItemGroup>
     <Folder Include="UseCase\Request\" />
     <Folder Include="UseCase\Response\" />
+    <Folder Include="Bus\" />
   </ItemGroup>
 
 </Project>

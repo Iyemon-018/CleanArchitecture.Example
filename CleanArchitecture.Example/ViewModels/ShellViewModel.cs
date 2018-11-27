@@ -10,10 +10,14 @@
     public sealed class ShellViewModel : AppViewModelBase
     {
         public static readonly string DialogIdentifier = "DialogHostArea";
+
+        public static readonly string ProgressDialogIdentifier = "ProgressDialogHostArea";
+
         private readonly IContentNavigator<ViewType> _contentNavigator;
 
-        public ShellViewModel(IDialogService dialogService, IContentNavigator<ViewType> contentNavigator) :
-            base(dialogService)
+        public ShellViewModel(IDialogService dialogService
+                            , IProgressService progressService, IContentNavigator<ViewType> contentNavigator) :
+            base(dialogService, progressService)
         {
             _contentNavigator = contentNavigator;
             var menus = Enum.GetValues(typeof(ViewType))

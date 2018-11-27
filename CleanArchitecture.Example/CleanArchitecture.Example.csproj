@@ -84,6 +84,7 @@
     </ApplicationDefinition>
     <Compile Include="ComponentModels\ErrorViewModel.cs" />
     <Compile Include="ComponentModels\InformationViewModel.cs" />
+    <Compile Include="ComponentModels\ProgressViewModel.cs" />
     <Compile Include="ComponentModels\QuestionViewModel.cs" />
     <Compile Include="Components\ErrorDialog.xaml.cs">
       <DependentUpon>ErrorDialog.xaml</DependentUpon>
@@ -91,12 +92,16 @@
     <Compile Include="Components\InformationDialog.xaml.cs">
       <DependentUpon>InformationDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\ProgressDialog.xaml.cs">
+      <DependentUpon>ProgressDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\QuestionDialog.xaml.cs">
       <DependentUpon>QuestionDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Interactions\MenuItem.cs" />
     <Compile Include="Services\ContentNavigator.cs" />
     <Compile Include="Services\DialogService.cs" />
+    <Compile Include="Services\ProgressService.cs" />
     <Compile Include="ViewModels\AppViewModelBase.cs" />
     <Compile Include="ViewModels\DetailDataListViewModel.cs" />
     <Compile Include="ViewModels\GetCurrentDateTimeViewModel.cs" />
@@ -120,6 +125,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\InformationDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\ProgressDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Components\QuestionDialog.xaml">

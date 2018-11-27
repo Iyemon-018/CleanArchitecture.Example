@@ -4,7 +4,7 @@
 
     public sealed class DetailDataListViewModel : AppViewModelBase
     {
-        public DetailDataListViewModel(IDialogService dialogService) : base(dialogService)
+        public DetailDataListViewModel(IDialogService dialogService, IProgressService progressService) : base(dialogService,progressService)
         {
         }
     }

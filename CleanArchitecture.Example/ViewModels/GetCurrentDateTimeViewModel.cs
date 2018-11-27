@@ -11,7 +11,8 @@
         private readonly IGetCurrentDateTimeUseCase _getCurrentDateTimeUseCase;
 
         public GetCurrentDateTimeViewModel(IDialogService dialogService
-                                         , IGetCurrentDateTimeUseCase getCurrentDateTimeUseCase) : base(dialogService)
+                                           , IProgressService progressService
+                                         , IGetCurrentDateTimeUseCase getCurrentDateTimeUseCase) : base(dialogService, progressService)
         {
             _getCurrentDateTimeUseCase = getCurrentDateTimeUseCase;
             GetCurrentDateTimeCommand  = new DelegateCommand(ExecuteGetCurrentDateTimeUseCase);

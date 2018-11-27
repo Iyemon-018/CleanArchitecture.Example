@@ -4,11 +4,13 @@
 
     public abstract class AppViewModelBase : ViewModelBase
     {
-        protected AppViewModelBase(IDialogService dialogService)
+        protected AppViewModelBase(IDialogService dialogService, IProgressService progressService)
         {
-            DialogService = dialogService;
+            DialogService   = dialogService;
+            ProgressService = progressService;
         }
 
         protected IDialogService DialogService { get; }
+        public IProgressService ProgressService { get; }
     }
 }

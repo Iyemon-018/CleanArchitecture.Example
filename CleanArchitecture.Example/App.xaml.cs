@@ -21,6 +21,8 @@
             _contentNavigator = new ContentNavigator();
             containerRegistry.RegisterInstance(typeof(IDialogService)
                                              , new DialogService(ShellViewModel.DialogIdentifier));
+            containerRegistry.RegisterInstance(typeof(IProgressService)
+                                             , new ProgressService(ShellViewModel.ProgressDialogIdentifier));
             containerRegistry.RegisterInstance(typeof(IContentNavigator<ViewType>), _contentNavigator);
             containerRegistry.Register(typeof(IGetCurrentDateTimeUseCase), typeof(GetCurrentDateTimeUseCase));
         }
