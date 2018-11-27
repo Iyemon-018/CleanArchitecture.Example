@@ -7,9 +7,4 @@
     {
         Task Execute(Action<IProgressMessenger> work);
     }
-
-    public interface IProgressMessenger
-    {
-        string Message { get; set; }
-    }
 }

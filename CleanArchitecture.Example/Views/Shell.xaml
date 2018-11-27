@@ -32,10 +32,11 @@
                     </Border>
                     <ListBox Margin="0,16"
                              ItemsSource="{Binding MenuItems, Mode=OneWay}"
+                             SelectedIndex="0"
                              SelectionChanged="MenuListBox_OnSelectionChanged">
                         <ListBox.ItemTemplate>
                             <DataTemplate DataType="{x:Type interactions:MenuItem}">
-                                <Border>
+                                <Border Background="#01000000">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="PreviewMouseUp">
                                             <i:InvokeCommandAction Command="{Binding SelectionCommand, Mode=OneWay}" />

@@ -3,8 +3,10 @@
     using System.Windows;
     using Bus;
     using Domain.Bus;
+    using Domain.Presenter;
     using Domain.Services;
     using Domain.UseCase;
+    using Presenter;
     using Prism.Ioc;
     using Prism.Unity;
     using Services;
@@ -26,6 +28,7 @@
 
             containerRegistry.RegisterInstance(typeof(IDialogBus), new DialogBus(dialogService, progressService));
             containerRegistry.RegisterInstance(typeof(IContentNavigator<ViewType>), _contentNavigator);
+            containerRegistry.RegisterInstance(typeof(IProgressPresenter), new ProgressPresenter(progressService.GetMessenger()));
             containerRegistry.Register(typeof(IGetCurrentDateTimeUseCase), typeof(GetCurrentDateTimeUseCase));
         }
 

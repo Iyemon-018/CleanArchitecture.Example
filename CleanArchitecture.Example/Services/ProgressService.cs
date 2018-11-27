@@ -13,16 +13,18 @@
 
         private Action<IProgressMessenger> _work;
 
-        private ProgressViewModel _viewModel;
+        private readonly ProgressViewModel _viewModel;
 
         public ProgressService(object identifier)
         {
             _identifier = identifier;
+            _viewModel = new ProgressViewModel();
         }
+
+        public IProgressMessenger GetMessenger() => _viewModel;
 
         public Task Execute(Action<IProgressMessenger> work)
         {
-            _viewModel = new ProgressViewModel();
             var view = new ProgressDialog {DataContext = _viewModel};
             _work = work;
             return DialogHost.Show(view, _identifier, OpenEventHandler);

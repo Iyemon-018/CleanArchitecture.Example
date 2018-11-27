@@ -1,35 +1,21 @@
-﻿using System;
-using System.Threading;
-
-namespace CleanArchitecture.Example.Domain.UseCase
+﻿namespace CleanArchitecture.Example.Domain.UseCase
 {
+    using System;
+    using System.Threading;
+    using Request;
+    using Response;
+
     public sealed class GetCurrentDateTimeUseCase : IGetCurrentDateTimeUseCase
     {
-        public GetCurrentDateTimeUseCase()
-        {
-            
-        }
         public GetCurrentDateTimeUseCaseResponse Handle(GetCurrentDateTimeUseCaseRequest request)
         {
-            Thread.Sleep(TimeSpan.FromSeconds(3));
+            for (var i = 0; i < 10; i++)
+            {
+                request.ProgressPresenter.SetMessage($"{i} 秒経過...");
+                Thread.Sleep(TimeSpan.FromSeconds(1));
+            }
+
             return new GetCurrentDateTimeUseCaseResponse(DateTime.Now);
         }
-    }
-
-    public sealed class GetCurrentDateTimeUseCaseResponse
-    {
-        private readonly DateTime _currentTime;
-
-        public GetCurrentDateTimeUseCaseResponse(DateTime currentTime)
-        {
-            _currentTime = currentTime;
-        }
-
-        public DateTime CurrentTime => _currentTime;
-    }
-
-    public sealed class GetCurrentDateTimeUseCaseRequest
-    {
-
     }
 }

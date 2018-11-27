@@ -16,13 +16,16 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Border Grid.Column="0" Padding="16">
-            <ProgressBar Width="64"
-                         Height="64"
+            <ProgressBar Width="48"
+                         Height="48"
                          IsIndeterminate="True"
                          Style="{DynamicResource MaterialDesignCircularProgressBar}" />
         </Border>
-        <Border Grid.Column="1" Padding="0,16">
-            <TextBlock Text="{Binding Message, Mode=OneWay}" />
+        <Border Grid.Column="1" Padding="0,16,16,16">
+            <TextBlock VerticalAlignment="Center"
+                       FontSize="24"
+                       Text="{Binding Message, Mode=OneWay}"
+                       TextWrapping="WrapWithOverflow" />
         </Border>
     </Grid>
 </UserControl>
