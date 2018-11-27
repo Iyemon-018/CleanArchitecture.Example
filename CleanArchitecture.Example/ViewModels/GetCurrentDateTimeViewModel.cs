@@ -1,11 +1,13 @@
 ﻿namespace CleanArchitecture.Example.ViewModels
 {
+    using System;
     using System.Windows.Input;
     using Domain.Bus;
     using Domain.Presenter;
     using Domain.Services;
     using Domain.UseCase;
     using Domain.UseCase.Request;
+    using Domain.UseCase.Response;
     using Prism.Commands;
 
     public sealed class GetCurrentDateTimeViewModel : AppViewModelBase
@@ -25,11 +27,23 @@
 
         private async void ExecuteGetCurrentDateTimeUseCase()
         {
+            IResponse response = null;
             await DialogBus.Execute(x =>
-                                        _getCurrentDateTimeUseCase
-                                            .Handle(new GetCurrentDateTimeUseCaseRequest(ProgressPresenter)));
+                                    {
+                                        var request = new GetCurrentDateTimeUseCaseRequest(ProgressPresenter);
+                                        response = _getCurrentDateTimeUseCase.Handle(request);
+                                    });
 
-            await DialogBus.Information(DialogData.Build("UseCase 完了", "UseCase の実行が完了しました。"));
+            if (response.ResultType == ResponseResultType.Success)
+            {
+                await DialogBus.Information(DialogData.Build("データ取得 完了", "データの取得が完了しました。"));
+            }
+            else if (response.ResultType == ResponseResultType.Failed)
+            {
+                await DialogBus.Error(DialogData.Build("データ取得 失敗"
+                                                     , $"データの取得に失敗しました。{Environment.NewLine}"
+                                                       + $"{response.Cause}"));
+            }
         }
     }
 }

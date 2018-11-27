@@ -2,15 +2,14 @@
 {
     using System;
 
-    public sealed class GetCurrentDateTimeUseCaseResponse
+    public sealed class GetCurrentDateTimeUseCaseResponse : ResponseBase
     {
-        private readonly DateTime _currentTime;
-
-        public GetCurrentDateTimeUseCaseResponse(DateTime currentTime)
+        public GetCurrentDateTimeUseCaseResponse(ResponseResultType resultType, string cause, DateTime currentTime) :
+            base(resultType, cause)
         {
-            _currentTime = currentTime;
+            CurrentTime = currentTime;
         }
 
-        public DateTime CurrentTime => _currentTime;
+        public DateTime CurrentTime { get; }
     }
 }
