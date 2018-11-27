@@ -82,6 +82,7 @@
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Compile Include="Bus\DialogBus.cs" />
     <Compile Include="ComponentModels\ErrorViewModel.cs" />
     <Compile Include="ComponentModels\InformationViewModel.cs" />
     <Compile Include="ComponentModels\ProgressViewModel.cs" />

@@ -1,16 +1,14 @@
 ﻿namespace CleanArchitecture.Example.ViewModels
 {
-    using Domain.Services;
+    using Domain.Bus;
 
     public abstract class AppViewModelBase : ViewModelBase
     {
-        protected AppViewModelBase(IDialogService dialogService, IProgressService progressService)
+        protected AppViewModelBase(IDialogBus dialogBus)
         {
-            DialogService   = dialogService;
-            ProgressService = progressService;
+            DialogBus = dialogBus;
         }
 
-        protected IDialogService DialogService { get; }
-        public IProgressService ProgressService { get; }
+        public IDialogBus DialogBus { get; }
     }
 }

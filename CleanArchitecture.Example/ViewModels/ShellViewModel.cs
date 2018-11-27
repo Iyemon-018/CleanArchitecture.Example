@@ -3,6 +3,7 @@
     using System;
     using System.Collections.ObjectModel;
     using System.Linq;
+    using Domain.Bus;
     using Domain.Services;
     using Interactions;
     using Prism.Commands;
@@ -15,9 +16,8 @@
 
         private readonly IContentNavigator<ViewType> _contentNavigator;
 
-        public ShellViewModel(IDialogService dialogService
-                            , IProgressService progressService, IContentNavigator<ViewType> contentNavigator) :
-            base(dialogService, progressService)
+        public ShellViewModel(IDialogBus dialogBus, IContentNavigator<ViewType> contentNavigator) :
+            base(dialogBus)
         {
             _contentNavigator = contentNavigator;
             var menus = Enum.GetValues(typeof(ViewType))

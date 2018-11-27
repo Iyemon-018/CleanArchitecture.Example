@@ -2,6 +2,7 @@
 {
     using System.Threading.Tasks;
     using System.Windows.Input;
+    using Domain.Bus;
     using Domain.Services;
     using Domain.UseCase;
     using Prism.Commands;
@@ -10,9 +11,8 @@
     {
         private readonly IGetCurrentDateTimeUseCase _getCurrentDateTimeUseCase;
 
-        public GetCurrentDateTimeViewModel(IDialogService dialogService
-                                           , IProgressService progressService
-                                         , IGetCurrentDateTimeUseCase getCurrentDateTimeUseCase) : base(dialogService, progressService)
+        public GetCurrentDateTimeViewModel(IDialogBus dialogBus
+                                         , IGetCurrentDateTimeUseCase getCurrentDateTimeUseCase) : base(dialogBus)
         {
             _getCurrentDateTimeUseCase = getCurrentDateTimeUseCase;
             GetCurrentDateTimeCommand  = new DelegateCommand(ExecuteGetCurrentDateTimeUseCase);
@@ -24,7 +24,7 @@
         {
             await Task.Run(() => _getCurrentDateTimeUseCase.Handle(new GetCurrentDateTimeUseCaseRequest()));
 
-            await DialogService.Information(DialogData.Build("UseCase 完了", "UseCase の実行が完了しました。"));
+            await DialogBus.Information(DialogData.Build("UseCase 完了", "UseCase の実行が完了しました。"));
         }
     }
 }

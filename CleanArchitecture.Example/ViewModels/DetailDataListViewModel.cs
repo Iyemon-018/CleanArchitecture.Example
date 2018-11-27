@@ -1,10 +1,10 @@
 ﻿namespace CleanArchitecture.Example.ViewModels
 {
-    using Domain.Services;
+    using Domain.Bus;
 
     public sealed class DetailDataListViewModel : AppViewModelBase
     {
-        public DetailDataListViewModel(IDialogService dialogService, IProgressService progressService) : base(dialogService,progressService)
+        public DetailDataListViewModel(IDialogBus dialogBus) : base(dialogBus)
         {
         }
     }

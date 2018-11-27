@@ -1,6 +1,8 @@
 ﻿namespace CleanArchitecture.Example
 {
     using System.Windows;
+    using Bus;
+    using Domain.Bus;
     using Domain.Services;
     using Domain.UseCase;
     using Prism.Ioc;
@@ -19,10 +21,10 @@
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             _contentNavigator = new ContentNavigator();
-            containerRegistry.RegisterInstance(typeof(IDialogService)
-                                             , new DialogService(ShellViewModel.DialogIdentifier));
-            containerRegistry.RegisterInstance(typeof(IProgressService)
-                                             , new ProgressService(ShellViewModel.ProgressDialogIdentifier));
+            var dialogService   = new DialogService(ShellViewModel.DialogIdentifier);
+            var progressService = new ProgressService(ShellViewModel.ProgressDialogIdentifier);
+
+            containerRegistry.RegisterInstance(typeof(IDialogBus), new DialogBus(dialogService, progressService));
             containerRegistry.RegisterInstance(typeof(IContentNavigator<ViewType>), _contentNavigator);
             containerRegistry.Register(typeof(IGetCurrentDateTimeUseCase), typeof(GetCurrentDateTimeUseCase));
         }
