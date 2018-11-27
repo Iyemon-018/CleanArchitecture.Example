@@ -1,29 +1,29 @@
-﻿using CleanArchitecture.Example.Domain.Services;
-using CleanArchitecture.Example.ViewModels;
-
-namespace CleanArchitecture.Example.ComponentModels
+﻿namespace CleanArchitecture.Example.ComponentModels
 {
+    using Domain.Services;
+    using ViewModels;
+
     public sealed class ErrorViewModel : ViewModelBase
     {
+        private string _caption;
+
+        private string _message;
+
         public ErrorViewModel()
         {
-
         }
+
         public ErrorViewModel(IDialogData dialogData)
         {
             _caption = dialogData.Caption;
             _message = dialogData.Message;
         }
 
-        private string _caption;
-
         public string Caption
         {
             get => _caption;
             private set => SetProperty(ref _caption, value);
         }
-
-        private string _message;
 
         public string Message
         {

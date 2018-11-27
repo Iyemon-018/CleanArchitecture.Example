@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using CleanArchitecture.Example.Domain.Services;
-using CleanArchitecture.Example.Interactions;
-using Prism.Commands;
-
-namespace CleanArchitecture.Example.ViewModels
+﻿namespace CleanArchitecture.Example.ViewModels
 {
+    using System;
+    using System.Collections.ObjectModel;
+    using System.Linq;
+    using Domain.Services;
+    using Interactions;
+    using Prism.Commands;
+
     public sealed class ShellViewModel : AppViewModelBase
     {
         public static readonly string DialogIdentifier = "DialogHostArea";
@@ -17,12 +17,13 @@ namespace CleanArchitecture.Example.ViewModels
         {
             _contentNavigator = contentNavigator;
             var menus = Enum.GetValues(typeof(ViewType))
-                             .OfType<ViewType>()
-                             .Select(x => new MenuItem(x)
-                                          {
-                                              Name = x.ToString()
-                                            , SelectionCommand = new DelegateCommand(() => _contentNavigator.Navigate(x))
-                                          });
+                            .OfType<ViewType>()
+                            .Select(x => new MenuItem(x)
+                                         {
+                                             Name = x.ToString()
+                                           , SelectionCommand =
+                                                 new DelegateCommand(() => _contentNavigator.Navigate(x))
+                                         });
             MenuItems = new ObservableCollection<MenuItem>(menus);
         }
 

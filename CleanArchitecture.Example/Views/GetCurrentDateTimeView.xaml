@@ -6,9 +6,9 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:mvvm="http://prismlibrary.com/"
       Title="GetCurrentDateTimeView"
-      mvvm:ViewModelLocator.AutoWireViewModel="True"
       d:DesignHeight="450"
       d:DesignWidth="800"
+      mvvm:ViewModelLocator.AutoWireViewModel="True"
       mc:Ignorable="d">
 
     <Grid>

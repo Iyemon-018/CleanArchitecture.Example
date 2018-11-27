@@ -1,11 +1,11 @@
-﻿using System.Threading.Tasks;
-using CleanArchitecture.Example.ComponentModels;
-using CleanArchitecture.Example.Components;
-using CleanArchitecture.Example.Domain.Services;
-using MaterialDesignThemes.Wpf;
-
-namespace CleanArchitecture.Example.Services
+﻿namespace CleanArchitecture.Example.Services
 {
+    using System.Threading.Tasks;
+    using ComponentModels;
+    using Components;
+    using Domain.Services;
+    using MaterialDesignThemes.Wpf;
+
     public sealed class DialogService : IDialogService
     {
         private readonly object _identifier;

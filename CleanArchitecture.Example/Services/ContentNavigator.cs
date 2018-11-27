@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Navigation;
-using CleanArchitecture.Example.Domain.Services;
-
-namespace CleanArchitecture.Example.Services
+﻿namespace CleanArchitecture.Example.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Windows.Navigation;
+    using Domain.Services;
+
     public sealed class ContentNavigator : IContentNavigator<ViewType>
     {
         internal static readonly Dictionary<ViewType, Uri> ViewTypeToContentCache;
+
+        private NavigationService _navigationService;
 
         static ContentNavigator()
         {
@@ -25,10 +27,13 @@ namespace CleanArchitecture.Example.Services
                                      };
         }
 
-        private NavigationService _navigationService;
-
-        public void SetNavigationService(object navigationService) =>
-            _navigationService = navigationService is NavigationService s ? s : throw new ArgumentException($"{nameof(navigationService)} は型 : {typeof(NavigationService)} ではありません。", nameof(navigationService));
+        public void SetNavigationService(object navigationService)
+        {
+            _navigationService = navigationService is NavigationService s
+                                     ? s
+                                     : throw new ArgumentException($"{nameof(navigationService)} は型 : {typeof(NavigationService)} ではありません。"
+                                                                  , nameof(navigationService));
+        }
 
         public void Navigate(ViewType key)
         {

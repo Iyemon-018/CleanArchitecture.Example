@@ -1,16 +1,14 @@
-﻿using CleanArchitecture.Example.Domain.Services;
-
-namespace CleanArchitecture.Example.ViewModels
+﻿namespace CleanArchitecture.Example.ViewModels
 {
+    using Domain.Services;
+
     public abstract class AppViewModelBase : ViewModelBase
     {
-        private readonly IDialogService _dialogService;
-
         protected AppViewModelBase(IDialogService dialogService)
         {
-            _dialogService = dialogService;
+            DialogService = dialogService;
         }
 
-        protected IDialogService DialogService => _dialogService;
+        protected IDialogService DialogService { get; }
     }
 }

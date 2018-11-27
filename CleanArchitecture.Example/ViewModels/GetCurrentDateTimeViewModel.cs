@@ -1,20 +1,23 @@
-﻿using System.Threading.Tasks;
-using System.Windows.Input;
-using CleanArchitecture.Example.Domain.Services;
-using CleanArchitecture.Example.Domain.UseCase;
-using Prism.Commands;
-
-namespace CleanArchitecture.Example.ViewModels
+﻿namespace CleanArchitecture.Example.ViewModels
 {
+    using System.Threading.Tasks;
+    using System.Windows.Input;
+    using Domain.Services;
+    using Domain.UseCase;
+    using Prism.Commands;
+
     public sealed class GetCurrentDateTimeViewModel : AppViewModelBase
     {
         private readonly IGetCurrentDateTimeUseCase _getCurrentDateTimeUseCase;
 
-        public GetCurrentDateTimeViewModel(IDialogService dialogService, IGetCurrentDateTimeUseCase getCurrentDateTimeUseCase) : base(dialogService)
+        public GetCurrentDateTimeViewModel(IDialogService dialogService
+                                         , IGetCurrentDateTimeUseCase getCurrentDateTimeUseCase) : base(dialogService)
         {
             _getCurrentDateTimeUseCase = getCurrentDateTimeUseCase;
-            GetCurrentDateTimeCommand = new DelegateCommand(ExecuteGetCurrentDateTimeUseCase);
+            GetCurrentDateTimeCommand  = new DelegateCommand(ExecuteGetCurrentDateTimeUseCase);
         }
+
+        public ICommand GetCurrentDateTimeCommand { get; }
 
         private async void ExecuteGetCurrentDateTimeUseCase()
         {
@@ -22,7 +25,5 @@ namespace CleanArchitecture.Example.ViewModels
 
             await DialogService.Information(DialogData.Build("UseCase 完了", "UseCase の実行が完了しました。"));
         }
-
-        public ICommand GetCurrentDateTimeCommand { get; }
     }
 }
