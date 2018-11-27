@@ -16,16 +16,14 @@ namespace CleanArchitecture.Example.ViewModels
             base(dialogService)
         {
             _contentNavigator = contentNavigator;
-            MenuItems = new ObservableCollection<MenuItem>(Enum.GetValues(typeof(ViewType))
-                                                               .OfType<ViewType>()
-                                                               .Select(x => new MenuItem(x)
-                                                                            {
-                                                                                Name = x.ToString()
-                                                                              , SelectionCommand =
-                                                                                    new DelegateCommand(() =>
-                                                                                                            _contentNavigator
-                                                                                                                .Navigate(x))
-                                                                            }));
+            var menus = Enum.GetValues(typeof(ViewType))
+                             .OfType<ViewType>()
+                             .Select(x => new MenuItem(x)
+                                          {
+                                              Name = x.ToString()
+                                            , SelectionCommand = new DelegateCommand(() => _contentNavigator.Navigate(x))
+                                          });
+            MenuItems = new ObservableCollection<MenuItem>(menus);
         }
 
         public ObservableCollection<MenuItem> MenuItems { get; }

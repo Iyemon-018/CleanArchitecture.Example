@@ -5,6 +5,10 @@ namespace CleanArchitecture.Example.Domain.UseCase
 {
     public sealed class GetCurrentDateTimeUseCase : IGetCurrentDateTimeUseCase
     {
+        public GetCurrentDateTimeUseCase()
+        {
+            
+        }
         public GetCurrentDateTimeUseCaseResponse Handle(GetCurrentDateTimeUseCaseRequest request)
         {
             Thread.Sleep(TimeSpan.FromSeconds(3));

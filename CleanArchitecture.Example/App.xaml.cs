@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using CleanArchitecture.Example.Domain.Services;
+using CleanArchitecture.Example.Domain.UseCase;
 using CleanArchitecture.Example.Services;
 using CleanArchitecture.Example.ViewModels;
 using CleanArchitecture.Example.Views;
@@ -20,6 +21,7 @@ namespace CleanArchitecture.Example
             _contentNavigator = new ContentNavigator();
             containerRegistry.RegisterInstance(typeof(IDialogService), new DialogService(ShellViewModel.DialogIdentifier));
             containerRegistry.RegisterInstance(typeof(IContentNavigator<ViewType>), _contentNavigator);
+            containerRegistry.Register(typeof(IGetCurrentDateTimeUseCase), typeof(GetCurrentDateTimeUseCase));
         }
 
         protected override Window CreateShell()
