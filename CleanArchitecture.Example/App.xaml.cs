@@ -30,6 +30,7 @@
             containerRegistry.RegisterInstance(typeof(IContentNavigator<ViewType>), _contentNavigator);
             containerRegistry.RegisterInstance(typeof(IProgressPresenter), new ProgressPresenter(progressService.GetMessenger()));
             containerRegistry.Register(typeof(IGetCurrentDateTimeUseCase), typeof(GetCurrentDateTimeUseCase));
+            containerRegistry.Register(typeof(IDetailDataListUseCase), typeof(DetailDataListUseCase));
         }
 
         protected override Window CreateShell()

@@ -36,5 +36,10 @@
         {
             return _progressService.Execute(work);
         }
+
+        public Task ExecuteCancellable(Action<IProgressMessenger> work)
+        {
+            return _progressService.ExecuteCancellable(work);
+        }
     }
 }

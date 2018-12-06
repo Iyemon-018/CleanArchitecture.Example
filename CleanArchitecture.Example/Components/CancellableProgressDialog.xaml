@@ -16,7 +16,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Border Grid.Row="0" Padding="0,8">
+            <Border Grid.Row="0" Padding="0,8,0,16">
                 <TextBlock VerticalAlignment="Center"
                            FontSize="24"
                            Text="{Binding Message, Mode=OneWay}"
@@ -27,10 +27,9 @@
                              Margin="0,0,0,8"
                              DockPanel.Dock="Top"
                              Maximum="{Binding Maximum, Mode=OneWay}"
-                             Style="{DynamicResource MaterialDesignLinearProgressBar}"
                              Value="{Binding Value, Mode=OneWay}" />
                 <Border HorizontalAlignment="Left" DockPanel.Dock="Left">
-                    <TextBlock Text="100%" />
+                    <TextBlock Text="{Binding ValuePercentage, Mode=OneWay, StringFormat=\{0:P0\}}" />
                 </Border>
                 <StackPanel HorizontalAlignment="Right"
                             VerticalAlignment="Top"

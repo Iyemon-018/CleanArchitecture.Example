@@ -13,5 +13,7 @@
         Task Error(IDialogData dialogData);
 
         Task Execute(Action<IProgressMessenger> work);
+
+        Task ExecuteCancellable(Action<IProgressMessenger> work);
     }
 }

@@ -13,5 +13,6 @@
 
     <Grid>
         <TextBlock Text="DetailDataListView" />
+        <Button Command="{Binding DetailDataListCommand, Mode=OneTime}" Content="Execute" />
     </Grid>
 </Page>
