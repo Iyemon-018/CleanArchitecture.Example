@@ -45,6 +45,12 @@
                         HorizontalAlignment="Center"
                         Command="{Binding GetCurrentDateTimeCommand, Mode=OneWay}"
                         Content="Execute" />
+                <Border>
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock Text="実行結果 " />
+                        <TextBlock Text="{Binding CurrentDateTime, Mode=OneWay, StringFormat=\{0:yyyy/MM/dd(ddd) HH:mm:ss.fff\}}" />
+                    </StackPanel>
+                </Border>
             </StackPanel>
         </Border>
     </Grid>
