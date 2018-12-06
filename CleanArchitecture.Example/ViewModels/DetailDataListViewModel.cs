@@ -21,8 +21,8 @@
             base(dialogBus, progressPresenter)
         {
             _detailDataListUseCase = detailDataListUseCase;
-            DetailDataListCommand = new DelegateCommand(ExecuteDetailDataListCommand);
-            UserDetailDataList = new ObservableCollection<UserDetailData>();
+            DetailDataListCommand  = new DelegateCommand(ExecuteDetailDataListCommand);
+            UserDetailDataList     = new ObservableCollection<UserDetailData>();
         }
 
         public ICommand DetailDataListCommand { get; }
@@ -39,7 +39,7 @@
                                                    var request = new DetailDataListUseCaseRequest(ProgressPresenter);
                                                    response = _detailDataListUseCase.Handle(request);
                                                });
-            
+
             if (response.ResultType == ResponseResultType.Success)
             {
                 UserDetailDataList.AddRange(response.GetUserDetails.Select(x => new UserDetailData(x)));

@@ -17,17 +17,19 @@
             var filmDirectors = new List<UserDetail>();
             request.ProgressPresenter.Initialize(TaskCount);
             request.ProgressPresenter.SetMessage("データを取得しています。しばらくお待ち下さい。");
-            
+
             for (int i = 0; i < TaskCount; i++)
             {
                 if (request.ProgressPresenter.IsCanceled)
                 {
+                    request.ProgressPresenter.SetMessage("取り消しています。しばらくお待ち下さい。");
+                    Thread.Sleep(TimeSpan.FromSeconds(3));
                     return new DetailDataListUseCaseResponse(ResponseResultType.Canceled, "ユーザーによってキャンセルされました。", null);
                 }
 
                 Thread.Sleep(TimeSpan.FromSeconds(1));
 
-                var filmDirector = FilmDirectorCache.Cache.TryGetValue(i, out var value) ? value : throw new InvalidOperationException(); 
+                var filmDirector = FilmDirectorCache.Cache.TryGetValue(i, out var value) ? value : throw new InvalidOperationException();
                 filmDirector.CreateDateTime = DateTime.Now;
                 filmDirectors.Add(filmDirector);
 

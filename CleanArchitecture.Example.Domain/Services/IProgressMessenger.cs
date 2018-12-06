@@ -9,5 +9,7 @@
         void Initialize(int maximum);
 
         void UpdateValue(int value);
+
+        void Completed();
     }
 }

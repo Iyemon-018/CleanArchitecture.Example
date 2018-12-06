@@ -20,7 +20,12 @@
 
         public ProgressViewModel()
         {
-            CancelCommand = new DelegateCommand(() => _isCanceled = true);
+            CancelCommand = new DelegateCommand(() =>
+                                                {
+                                                    IsWorking   = false;
+                                                    _isCanceled = true;
+                                                }
+                                                , () => IsWorking).ObservesProperty(() => IsWorking);
         }
 
         public bool IsCanceled => _isCanceled;
@@ -53,13 +58,27 @@
 
         public void Initialize(int maximum)
         {
-            Value   = 0;
-            Maximum = maximum;
+            IsWorking   = true;
+            _isCanceled = false;
+            Value       = 0;
+            Maximum     = maximum;
         }
 
         public void UpdateValue(int value)
         {
             Value = value;
+        }
+
+        public void Completed()
+        {
+        }
+
+        private bool _isWorking;
+
+        public bool IsWorking
+        {
+            get => _isWorking;
+            set => SetProperty(ref _isWorking, value);
         }
 
         protected override void OnPropertyChanged(PropertyChangedEventArgs args)
