@@ -3,16 +3,49 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:CleanArchitecture.Example.Views"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:mvvm="http://prismlibrary.com/"
+      xmlns:viewModels="clr-namespace:CleanArchitecture.Example.ViewModels"
       Title="GetCurrentDateTimeView"
+      d:DataContext="{d:DesignInstance {x:Type viewModels:GetCurrentDateTimeViewModel}}"
       d:DesignHeight="450"
       d:DesignWidth="800"
       mvvm:ViewModelLocator.AutoWireViewModel="True"
       mc:Ignorable="d">
 
     <Grid>
-        <TextBlock Text="GetCurrentDateTimeView" />
-        <Button Command="{Binding GetCurrentDateTimeCommand, Mode=OneWay}" Content="Execute" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Border Padding="0,16">
+            <TextBlock FontSize="24"
+                       Foreground="{StaticResource MaterialDesignLightForeground}"
+                       Text="１つのデータを取得するだけのシンプルな例" />
+        </Border>
+        <Border Grid.Row="1" Padding="0,16">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" TextElement.FontSize="18">
+                    <TextBlock VerticalAlignment="Center" Text="UseCase の実行結果は" />
+                    <ToggleButton Margin="8,0"
+                                  FontSize="14"
+                                  IsChecked="{Binding IsSuccess, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                  Style="{StaticResource MaterialDesignActionLightToggleButton}">
+                        <ToggleButton.Content>
+                            <TextBlock Text="失敗" />
+                        </ToggleButton.Content>
+                        <materialDesign:ToggleButtonAssist.OnContent>
+                            <TextBlock Text="成功" />
+                        </materialDesign:ToggleButtonAssist.OnContent>
+                    </ToggleButton>
+                    <TextBlock VerticalAlignment="Center" Text="する。" />
+                </StackPanel>
+                <Button Margin="0,18"
+                        HorizontalAlignment="Center"
+                        Command="{Binding GetCurrentDateTimeCommand, Mode=OneWay}"
+                        Content="Execute" />
+            </StackPanel>
+        </Border>
     </Grid>
 </Page>

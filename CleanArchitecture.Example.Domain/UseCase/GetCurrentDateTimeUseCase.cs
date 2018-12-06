@@ -13,9 +13,8 @@
                                                  + "しばらくお待ちください。");
             Thread.Sleep(TimeSpan.FromSeconds(3));
 
-            // 実行結果にランダム性を持たせる。
             var currentDateTime = DateTime.Now;
-            return currentDateTime.Millisecond % 2 == 0
+            return request.IsSuccess
                        ? new GetCurrentDateTimeUseCaseResponse(ResponseResultType.Success, string.Empty, currentDateTime)
                        : new GetCurrentDateTimeUseCaseResponse(ResponseResultType.Failed, $"原因不明のエラーが発生しました。", currentDateTime);
         }

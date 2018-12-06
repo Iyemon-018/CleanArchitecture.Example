@@ -20,6 +20,7 @@
             base(dialogBus, progressPresenter)
         {
             _getCurrentDateTimeUseCase = getCurrentDateTimeUseCase;
+            _isSuccess = true;
             GetCurrentDateTimeCommand  = new DelegateCommand(ExecuteGetCurrentDateTimeUseCase);
         }
 
@@ -30,7 +31,7 @@
             IResponse response = null;
             await DialogBus.Execute(x =>
                                     {
-                                        var request = new GetCurrentDateTimeUseCaseRequest(ProgressPresenter);
+                                        var request = new GetCurrentDateTimeUseCaseRequest(ProgressPresenter, IsSuccess);
                                         response = _getCurrentDateTimeUseCase.Handle(request);
                                     });
 
@@ -44,6 +45,14 @@
                                                      , $"データの取得に失敗しました。{Environment.NewLine}"
                                                        + $"{response.Cause}"));
             }
+        }
+
+        private bool _isSuccess;
+
+        public bool IsSuccess
+        {
+            get => _isSuccess;
+            set => SetProperty(ref _isSuccess, value);
         }
     }
 }
