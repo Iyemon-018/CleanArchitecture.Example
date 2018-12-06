@@ -15,7 +15,7 @@
 
         private void MenuListBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            MenuToggleButton.IsChecked = !MenuToggleButton.IsChecked;
+            MenuToggleButton.IsChecked = false;
         }
     }
 }

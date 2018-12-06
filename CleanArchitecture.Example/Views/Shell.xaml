@@ -15,6 +15,11 @@
         d:DataContext="{d:DesignInstance {x:Type viewModels:ShellViewModel}}"
         mvvm:ViewModelLocator.AutoWireViewModel="True"
         mc:Ignorable="d">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand, Mode=OneTime}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
         <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding IsChecked, ElementName=MenuToggleButton, Mode=OneWay}">
             <materialDesign:DrawerHost.LeftDrawerContent>
@@ -33,15 +38,16 @@
                     <ListBox Margin="0,16"
                              ItemsSource="{Binding MenuItems, Mode=OneWay}"
                              SelectedIndex="0"
+                             SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                              SelectionChanged="MenuListBox_OnSelectionChanged">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding SelectedMenuCommand, Mode=OneWay}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                         <ListBox.ItemTemplate>
                             <DataTemplate DataType="{x:Type interactions:MenuItem}">
-                                <Border Background="#01000000">
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="PreviewMouseUp">
-                                            <i:InvokeCommandAction Command="{Binding SelectionCommand, Mode=OneWay}" />
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
+                                <Border>
                                     <TextBlock Margin="16,8" Text="{Binding Name, Mode=OneWay}" />
                                 </Border>
                             </DataTemplate>
@@ -66,6 +72,11 @@
                             <ToggleButton x:Name="MenuToggleButton"
                                           IsChecked="False"
                                           Style="{DynamicResource MaterialDesignHamburgerToggleButton}" />
+                        </Border>
+                        <Border Grid.Column="1"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                            <TextBlock FontSize="28" Text="Clearn Architecture Example Project  For WPF" />
                         </Border>
                     </Grid>
                 </materialDesign:ColorZone>

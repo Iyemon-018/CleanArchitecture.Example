@@ -3,6 +3,7 @@
     using System;
     using System.Collections.ObjectModel;
     using System.Linq;
+    using System.Windows.Input;
     using Domain.Bus;
     using Domain.Presenter;
     using Domain.Services;
@@ -23,15 +24,25 @@
             _contentNavigator = contentNavigator;
             var menus = Enum.GetValues(typeof(ViewType))
                             .OfType<ViewType>()
-                            .Select(x => new MenuItem(x)
-                                         {
-                                             Name = x.ToString()
-                                           , SelectionCommand =
-                                                 new DelegateCommand(() => _contentNavigator.Navigate(x))
-                                         });
+                            .Select(x => new MenuItem(x));
             MenuItems = new ObservableCollection<MenuItem>(menus);
+            SelectedMenuCommand = new DelegateCommand(() => _contentNavigator.Navigate(SelectedMenuItem.ViewType));
+
+            LoadedCommand = new DelegateCommand(() => _contentNavigator.Navigate(ViewType.GetCurrentDateTime));
         }
 
+        public ICommand LoadedCommand { get; }
+
+        public ICommand SelectedMenuCommand { get; }
+
         public ObservableCollection<MenuItem> MenuItems { get; }
+
+        private MenuItem _selectedMenuItem;
+
+        public MenuItem SelectedMenuItem
+        {
+            get => _selectedMenuItem;
+            set => SetProperty(ref _selectedMenuItem, value);
+        }
     }
 }
