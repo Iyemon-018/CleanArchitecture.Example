@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="CleanArchitecture.Example.Components.CancellableProgressDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:componentModels="clr-namespace:CleanArchitecture.Example.ComponentModels"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:CleanArchitecture.Example.Components"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             MinWidth="320"
+             d:DataContext="{d:DesignInstance {x:Type componentModels:ProgressViewModel},
+                                              IsDesignTimeCreatable=True}"
+             mc:Ignorable="d">
+    <Border x:Name="LayoutRoot" Padding="16">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" Padding="0,8">
+                <TextBlock VerticalAlignment="Center"
+                           FontSize="24"
+                           Text="{Binding Message, Mode=OneWay}"
+                           TextWrapping="WrapWithOverflow" />
+            </Border>
+            <DockPanel Grid.Row="1">
+                <ProgressBar Height="4"
+                             Margin="0,0,0,8"
+                             DockPanel.Dock="Top"
+                             Maximum="{Binding Maximum, Mode=OneWay}"
+                             Style="{DynamicResource MaterialDesignLinearProgressBar}"
+                             Value="{Binding Value, Mode=OneWay}" />
+                <Border HorizontalAlignment="Left" DockPanel.Dock="Left">
+                    <TextBlock Text="100%" />
+                </Border>
+                <StackPanel HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            DockPanel.Dock="Right"
+                            Orientation="Horizontal">
+                    <TextBlock Text="{Binding Value, Mode=OneWay}" />
+                    <TextBlock Text="/" />
+                    <TextBlock Text="{Binding Maximum, Mode=OneWay}" />
+                </StackPanel>
+            </DockPanel>
+            <Border Grid.Row="2" Margin="0,8,0,0">
+                <Button HorizontalAlignment="Right"
+                        Command="{Binding CancelCommand, Mode=OneTime}"
+                        Content="Cancel"
+                        Style="{StaticResource MaterialDesignFlatButton}" />
+            </Border>
+        </Grid>
+    </Border>
+</UserControl>

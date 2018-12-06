@@ -87,6 +87,9 @@
     <Compile Include="ComponentModels\InformationViewModel.cs" />
     <Compile Include="ComponentModels\ProgressViewModel.cs" />
     <Compile Include="ComponentModels\QuestionViewModel.cs" />
+    <Compile Include="Components\CancellableProgressDialog.xaml.cs">
+      <DependentUpon>CancellableProgressDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\ErrorDialog.xaml.cs">
       <DependentUpon>ErrorDialog.xaml</DependentUpon>
     </Compile>
@@ -123,6 +126,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewType.cs" />
+    <Page Include="Components\CancellableProgressDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Components\ErrorDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

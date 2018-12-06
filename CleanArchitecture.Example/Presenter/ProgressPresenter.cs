@@ -16,5 +16,17 @@
         {
             _messenger.Message = message;
         }
+
+        public void UpdateValue(int value)
+        {
+            _messenger.UpdateValue(value);
+        }
+
+        public bool IsCanceled => _messenger.IsCanceled;
+
+        public void Initialize(int maximum)
+        {
+            _messenger.Initialize(maximum);
+        }
     }
 }

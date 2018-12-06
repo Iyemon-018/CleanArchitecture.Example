@@ -6,5 +6,7 @@
     public interface IProgressService
     {
         Task Execute(Action<IProgressMessenger> work);
+
+        Task ExecuteCancellable(Action<IProgressMessenger> work);
     }
 }

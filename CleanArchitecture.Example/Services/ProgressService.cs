@@ -30,6 +30,13 @@
             return DialogHost.Show(view, _identifier, OpenEventHandler);
         }
 
+        public Task ExecuteCancellable(Action<IProgressMessenger> work)
+        {
+            var view = new CancellableProgressDialog {DataContext = _viewModel};
+            _work = work;
+            return DialogHost.Show(view, _identifier, OpenEventHandler);
+        }
+
         private async void OpenEventHandler(object sender, DialogOpenedEventArgs eventArgs)
         {
             await Task.Run(() => _work?.Invoke(_viewModel))
