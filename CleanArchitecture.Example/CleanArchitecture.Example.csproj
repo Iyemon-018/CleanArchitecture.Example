@@ -103,6 +103,7 @@
       <DependentUpon>QuestionDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Interactions\MenuItem.cs" />
+    <Compile Include="Interactions\UserDetailData.cs" />
     <Compile Include="Presenter\ProgressPresenter.cs" />
     <Compile Include="Services\ContentNavigator.cs" />
     <Compile Include="Services\DialogService.cs" />
